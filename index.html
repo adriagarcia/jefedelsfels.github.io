@@ -23,7 +23,7 @@
 
 
 
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <!-- ADD Jquery Video Background -->
   <script src="js/yt/jquery.youtubebackground.js"></script>
   <script>
@@ -32,30 +32,23 @@
       
       $('#background-video').YTPlayer({
         fitToBackground: true,
-
         videoId: 'dSz0bNy-Pw0',
-        pauseOnScroll: true,
-        mute: true,
-        callback: function() {
-          videoCallbackEvents();
+        pauseOnScroll: false,
+        mute: false,
+        playerVars: {
+          modestbranding: 0,
+          autoplay: 1,
+          controls: 1,
+          showinfo: 0,
+          wmode: 'transparent',
+          branding: 0,
+          rel: 0,
+          autohide: 0,
         }
+        
       });
       
-      var videoCallbackEvents = function() {
-        var player = $('#background-video').data('ytPlayer').player;
       
-        player.addEventListener('onStateChange', function(event){
-            console.log("Player State Change", event);
-
-            // OnStateChange Data
-            if (event.data === 0) {          
-                console.log('video ended');
-            }
-            else if (event.data === 2) {          
-              console.log('paused');
-            }
-        });
-      }
     });
   </script>
 

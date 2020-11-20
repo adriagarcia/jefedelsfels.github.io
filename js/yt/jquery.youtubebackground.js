@@ -271,6 +271,8 @@ if (typeof Object.create !== "function") {
       }
     },
 
+    
+
     /**
      * @function getPlayer
      * returns youtube player
