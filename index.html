@@ -1,2 +1,64 @@
-hello
-world
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link href='http://fonts.googleapis.com/css?family=Raleway:400,200,300,700,100' rel='stylesheet' type='text/css'>
+
+
+  <script src="js/yt/jquery.youtubebackground.js"></script>
+  
+
+
+	<title>Jefedelsfels.com</title>
+	<link rel="stylesheet" href="js/yt/style.css">
+</head>
+
+<body>
+<main>
+
+  <div id="background-video" class="background-video">
+    <img src="images/placeholder.jpg" alt="" class="placeholder-image">
+  </div>
+
+
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <!-- ADD Jquery Video Background -->
+  <script src="js/yt/jquery.youtubebackground.js"></script>
+  <script>
+    jQuery(function($) {
+
+      
+      $('#background-video').YTPlayer({
+        fitToBackground: true,
+
+        videoId: 'dSz0bNy-Pw0',
+        pauseOnScroll: true,
+        mute: true,
+        callback: function() {
+          videoCallbackEvents();
+        }
+      });
+      
+      var videoCallbackEvents = function() {
+        var player = $('#background-video').data('ytPlayer').player;
+      
+        player.addEventListener('onStateChange', function(event){
+            console.log("Player State Change", event);
+
+            // OnStateChange Data
+            if (event.data === 0) {          
+                console.log('video ended');
+            }
+            else if (event.data === 2) {          
+              console.log('paused');
+            }
+        });
+      }
+    });
+  </script>
+
+</main>
+</body>
+</html>
