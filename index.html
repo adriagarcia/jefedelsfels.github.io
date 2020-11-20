@@ -17,8 +17,9 @@
 <body>
 <main>
 
+
   <div id="background-video" class="background-video">
-    <img src="images/placeholder.jpg" alt="" class="placeholder-image">
+    
   </div>
 
 
@@ -29,27 +30,32 @@
   <script>
     jQuery(function($) {
 
+
       
       $('#background-video').YTPlayer({
         fitToBackground: true,
         videoId: 'dSz0bNy-Pw0',
-        pauseOnScroll: false,
-        mute: false,
-        playerVars: {
-          modestbranding: 0,
-          autoplay: 1,
-          controls: 0,
-          showinfo: 0,
-          wmode: 'transparent',
-          branding: 0,
-          rel: 0,
-          autohide: 0,
-          origin: window.location.origin
+        pauseOnScroll: true,
+        callback: function() {
+          videoCallbackEvents();
         }
-        
       });
       
+      var videoCallbackEvents = function() {
+        var player = $('#background-video').data('ytPlayer').player;
       
+        player.addEventListener('onStateChange', function(event){
+            console.log("Player State Change", event);
+
+            // OnStateChange Data
+            if (event.data === 0) {          
+                console.log('video ended');
+            }
+            else if (event.data === 2) {          
+              console.log('paused');
+            }
+        });
+      }
     });
   </script>
 
